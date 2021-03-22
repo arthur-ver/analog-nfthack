@@ -6,7 +6,7 @@ require('firebase/firestore')
 
 import { ethers } from 'ethers'
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: process.env.FB_APP_API_KEY,
     authDomain: process.env.FB_APP_AUTH_DOMAIN,
     projectId: process.env.FB_APP_PROJECT_ID,

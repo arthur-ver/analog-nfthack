@@ -1708,15 +1708,14 @@ a {
   border-style: solid;
   border-width: 0.5px;
   border-color: #272727;
-  -webkit-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
+  -webkit-transition: border-color 200ms ease-in-out;
+  transition: border-color 200ms ease-in-out;
 }
 
 .nft:hover {
   z-index: 1;
-  border-style: solid;
   border-color: #686868;
-  box-shadow: 0 16px 100px 0 rgba(42, 45, 65, 0.1);
+  /*box-shadow: 0 16px 100px 0 rgba(42, 45, 65, 0.1);*/
 }
 
 #app {
@@ -1787,6 +1786,7 @@ a {
   font-size: 20px;
   line-height: 28px;
   cursor: pointer;
+  height: 60px;
 }
 
 .nft-title:hover {
@@ -1840,6 +1840,12 @@ a {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+.brand .router-link-active {
+  text-decoration: none !important;
+}
+.nav-menu .router-link-active {
+  text-decoration: none !important;
 }
 
 .brand.w--current {
@@ -2502,6 +2508,7 @@ a {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #646464;
+  height: 80px;
 }
 
 .nft-details-address {
@@ -2856,3 +2863,8 @@ a {
 }
 
 a { text-decoration: none; }
+.router-link-exact-active {
+  text-decoration: underline;
+}
+
+.account-link {text-decoration: none !important;}

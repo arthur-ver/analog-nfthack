@@ -1,8 +1,8 @@
 <template>
-	<div role="listitem" class="nft w-dyn-item w-col w-col-3">
+	<div v-if="nft.id" role="listitem" class="nft w-dyn-item w-col w-col-3">
 		<div class="nft-block">
 			<router-link :to="{name: 'nft', params: { id: nft.id }}" class="nft-image-block w-inline-block">
-				<div class="nft-bg-image" :style="'background-image: url('+nft.tokenURI+')'"></div><img src="../assets/placeholder.svg" loading="lazy" alt="" class="image-2">
+				<div class="nft-bg-image" :style="'background-image: url('+nft.tokenURI+')'"></div><img src="../assets/placeholder.svg" class="image-2">
 			</router-link>
 			<div class="nft-info-block">
 				<router-link :to="{name: 'nft', params: { id: nft.id }}" class="nft-title">{{title}}</router-link>
@@ -39,19 +39,20 @@ export default {
 		}
 	},
 	mounted() {
+		if(typeof this.nft.id === 'undefined') return // return if Object is undefined
 		let url = this.nft.metadataURI
 		fetch(url)
-		.then(res => res.json())
-		.then((out) => {
-			this.title = out.name
-			if(out.description.length > 35) {
-				this.description = out.description.substring(0, 35)+'...'
-			} else {
-				this.description = out.description
-			}
-			this.identiconCreator = new Identicon(this.nft.creator, identiconOptions).toString()
-		})
-		.catch(err => { throw err })
+			.then(res => res.json())
+			.then((out) => {
+				this.title = out.name
+				if(out.description.length > 35) {
+					this.description = out.description.substring(0, 35)+'...'
+				} else {
+					this.description = out.description
+				}
+				this.identiconCreator = new Identicon(this.nft.creator, identiconOptions).toString()
+			})
+			.catch(err => { throw err })
 	}
 }
 </script>
