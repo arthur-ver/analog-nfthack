@@ -40,6 +40,7 @@ function tokenURI(id) {
 }
 
 function ensureContractIsSet(timeout=1000000) {
+    console.log('waiting for contract')
     var start = Date.now()
     const waitForContract = (resolve, reject) => {
         if (store.state.authenticator.mediaContract != null)

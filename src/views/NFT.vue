@@ -54,8 +54,9 @@ export default {
 	created() {
 		this.id = this.$route.params.id
 	},
-	mounted() {		
+	mounted() {
         ensureContractIsSet().then(() => {
+			console.log('contract is loaded')
 			const promises = []
 			promises.push(tokenCreators(this.id))
 			promises.push(tokenURI(this.id))
