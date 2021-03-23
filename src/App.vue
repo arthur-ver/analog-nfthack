@@ -13,7 +13,7 @@
             <div>{{ authenticator.currentAccount.substring(0,7)}}...{{authenticator.currentAccount.substr(authenticator.currentAccount.length - 5) }}</div>
         </router-link>
       </nav>
-      <div class="menu-button w-nav-button"><img src="images/bx-menu-alt-right.svg" alt=""></div>
+      <div class="menu-button w-nav-button"><img src="./assets/bx-menu-alt-right.svg" alt=""></div>
     </div>
     <transition name="fade" mode="out-in">
       <router-view/>

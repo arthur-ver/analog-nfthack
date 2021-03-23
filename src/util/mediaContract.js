@@ -35,7 +35,7 @@ function tokenMetadataURI(id) {
 
 function tokenURI(id) {
     return new Promise((resolve) => {
-        store.state.authenticator.mediaContract.tokenURI(id).then(res => resolve(res))
+        store.state.authenticator.mediaContract.tokenURI(id).then(res => resolve(res.replace('https://ipfs.io/ipfs', 'https://gateway.pinata.cloud/ipfs/')))
     })
 }
 
