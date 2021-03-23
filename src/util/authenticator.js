@@ -18,7 +18,7 @@ export default class Authenticator {
         this.identicon = null
         this.initialize()
         this.mediaContract = null
-        this.currency = '0xD92E713d051C37EbB2561803a3b5FBAbc4962431'
+        this.currency = '0xD92E713d051C37EbB2561803a3b5FBAbc4962431'    //TestUSDT
     }
     initialize() {
         if(!window.ethereum) return
@@ -32,10 +32,16 @@ export default class Authenticator {
         return parseInt(await window.ethereum.request({ method: 'eth_chainId' }), 16)
     }
     handleAccountsChanged(accounts) {
+        console.log('account change triggered')
         if (accounts.length === 0) {
             this.currentAccount = null
             // MetaMask is locked or the user has not connected any accounts
             console.log('Please connect to MetaMask.')
+            this.provider = new ethers.providers.JsonRpcProvider('https://rinkeby.infura.io/v3/'+process.env.VUE_APP_INFURA_API)
+            this.mediaContract = new ethers.Contract(mediaContractAddress, ABI, this.provider)
+            this.getChainId().then(chainId => {
+                store.dispatch('registerZora', {signer: this.provider, chainId: chainId})
+            })
         } else if (accounts[0] !== this.currentAccount) {
             this.currentAccount = accounts[0]
             this.identicon = new Identicon(this.currentAccount, identiconOptions).toString()

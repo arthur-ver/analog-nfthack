@@ -15,7 +15,7 @@ const firebaseConfig = {
     appId: process.env.FB_APP_ID
 }
 
-const provider = new ethers.providers.JsonRpcProvider('https://rinkeby.infura.io/v3/'+process.env.INFURA_API)
+const provider = new ethers.providers.JsonRpcProvider('https://rinkeby.infura.io/v3/'+process.env.VUE_APP_INFURA_API)
 const mediaContract = new ethers.Contract(mediaContractAddress, ABI, provider)
 
 firebase.initializeApp(firebaseConfig)
